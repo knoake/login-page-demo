@@ -63,12 +63,13 @@ export class LoginPageComponent {
           this.router.navigate(['/welcome']);
         },
         error: (error: Error) => {
+          console.log('boo');
           this.submitting = false;
-          if (error.message.includes('expired')) {
+          if (error.message === 'expired') {
             this.signInForm.controls.password.setErrors({
               accountExpired: true,
             });
-          } else if (error.message === 'Password attempts exceeded') {
+          } else if (error.message === 'locked') {
             this.signInForm.controls.password.setErrors({
               tooManyAttempts: true,
             });
