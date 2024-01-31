@@ -114,6 +114,6 @@ $dark-login-page-demo-theme: mat.define-dark-theme(
   @include mat.all-component-colors($dark-login-page-demo-theme);
   // Add different logo for dark
   .logo {
-    content: url("/assets/02_msi-logo-signature.png");
+    content: url("assets/02_msi-logo-signature.png");
   }
 }
