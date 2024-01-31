@@ -1,0 +1,22 @@
+.flex {
+  display: flex;
+}
+
+.between {
+  justify-content: space-between;
+}
+
+.logo {
+  content: url("/assets/02_msi-logo-signature.png");
+  max-width: 280px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.main {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
