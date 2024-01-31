@@ -27,6 +27,10 @@
   .grey {
     color: mat.get-color-from-palette($foreground, icons);
   }
+
+  .primary {
+    color: mat.get-color-from-palette($primary);
+  }
 }
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
