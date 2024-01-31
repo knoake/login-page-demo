@@ -1,10 +1,31 @@
-# LoginPageDemo
+# Login Page Demo
 
 [Login page demo](https://knoake.github.io/login-page-demo/)
 
 The login page is responsive and supports device sizes down to iphone SE
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.10.
+
+## Testing the login
+
+**Successful login credentials:**
+
+Username: katie@example.com
+
+Password: hellomoto
+
+**Expired user credentials:**
+
+Username: anna@example.com
+
+Password: any
+
+**Locked out user credentials:**
+
+Username: james@example.com
+
+Password: any
+
 
 ## Development server
 
