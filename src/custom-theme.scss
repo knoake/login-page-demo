@@ -1,0 +1,115 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use "@angular/material" as mat;
+@use "sass:map";
+@use "sass:color";
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+@mixin login-page-theme($theme) {
+  // Extract whichever individual palettes you need from the theme.
+  $color-config: mat.get-color-config($theme);
+
+  $primary: map.get($color-config, primary);
+  $accent: map.get($color-config, accent);
+  $background: map.get($color-config, background);
+  $foreground: map.get($color-config, foreground);
+
+  .form-container {
+    background-color: mat.get-color-from-palette($background, card) !important;
+    color: mat.get-color-from-palette($foreground, text);
+  }
+
+  .grey {
+    color: mat.get-color-from-palette($foreground, icons);
+  }
+}
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+
+//The same colour is used throughout due to time constraint
+$custom: (
+  50: #005fbe,
+  100: #005fbe,
+  200: #005fbe,
+  300: #005fbe,
+  400: #005fbe,
+  500: #005fbe,
+  600: #005fbe,
+  700: #005fbe,
+  800: #005fbe,
+  900: #005fbe,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+  ),
+);
+//$login: mat.$custom;
+$login-page-demo-primary: mat.define-palette($custom, 500);
+$login-page-demo-accent: mat.define-palette(
+  mat.$pink-palette,
+  A200,
+  A100,
+  A400
+);
+// The warn palette is optional (defaults to red).
+$login-page-demo-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$login-page-demo-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $login-page-demo-primary,
+      accent: $login-page-demo-accent,
+      warn: $login-page-demo-warn,
+    ),
+  )
+);
+
+.logo {
+  content: url("/assets/02_msi-logo-signature.png");
+}
+
+//define a dark theme
+$dark-login-page-demo-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $login-page-demo-primary,
+      accent: $login-page-demo-accent,
+      warn: $login-page-demo-warn,
+    ),
+  )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+
+//default light theme
+@include mat.all-component-themes($login-page-demo-theme);
+@include login-page-theme($login-page-demo-theme);
+
+// Include the dark color styles.
+@media (prefers-color-scheme: dark) {
+  // Apply the dark theme
+  @include mat.all-component-colors($dark-login-page-demo-theme);
+  // Add different logo for dark
+  .logo {
+    content: url("/assets/02_msi-logo-signature.png");
+  }
+}
