@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { WelcomePageComponent } from './welcome-page.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 describe('WelcomePageComponent', () => {
   let component: WelcomePageComponent;
@@ -8,9 +9,9 @@ describe('WelcomePageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WelcomePageComponent ]
-    })
-    .compileComponents();
+      declarations: [WelcomePageComponent],
+      imports: [MatToolbarModule],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(WelcomePageComponent);
     component = fixture.componentInstance;
