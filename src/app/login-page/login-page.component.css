@@ -1,0 +1,80 @@
+.flex {
+  display: flex;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.flex1 {
+  flex: 1;
+}
+
+.wrapper {
+  min-height: 100vh;
+}
+
+.cover {
+  max-width: 380px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 4px;
+}
+
+.padding30 {
+  padding: 30px 30px;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.flex-center {
+  justify-content: center;
+}
+
+fieldset {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+.mat-form-field {
+  display: block;
+}
+
+legend {
+  display: none;
+}
+
+.logo {
+  content: url("/assets/02_msi-logo-signature.png");
+  max-width: 280px;
+}
+
+.forgotten-password {
+  font-weight: 500;
+}
+
+.button-container {
+  justify-content: space-between;
+  margin-bottom: 8px;
+  margin-top: 26px;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+.progress-bar {
+  position: relative;
+  top: 0;
+  width: 100%;
+  height: 12px;
+}

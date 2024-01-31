@@ -1,0 +1,77 @@
+<div
+  [ngClass]="{
+    'form-container': (isHandset$ | async)
+  }"
+  class="wrapper flex column"
+>
+  <div *ngIf="isHandset$ | async" class="progress-bar">
+    <mat-progress-bar
+      *ngIf="submitting"
+      mode="indeterminate"
+    ></mat-progress-bar>
+  </div>
+
+  <div class="align-center flex flex1">
+    <div class="cover form-container">
+      <div *ngIf="(isHandset$ | async) === false" class="progress-bar">
+        <mat-progress-bar
+          *ngIf="submitting"
+          mode="indeterminate"
+        ></mat-progress-bar>
+      </div>
+
+      <div class="padding30">
+        <div class="flex flex-center">
+          <div class="logo"></div>
+        </div>
+
+        <h1>Sign in</h1>
+        <p class="grey">Welcome to motorola</p>
+
+        <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+          <fieldset [disabled]="submitting">
+            <legend>Sign In</legend>
+            <mat-form-field appearance="outline">
+              <mat-label>Username or e-mail</mat-label>
+              <input
+                matInput
+                formControlName="username"
+                type="text"
+                autocomplete="username"
+                spellcheck="false"
+                autocapitalize="none"
+              />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Password</mat-label>
+              <input
+                matInput
+                formControlName="password"
+                type="password"
+                autocomplete="current-password"
+              />
+            </mat-form-field>
+
+            <div class="button-container flex">
+              <a
+                class="text forgotten-password"
+                routerLink="/forgotten-password"
+                [style.pointer-events]="submitting ? 'none' : 'auto'"
+                >Forgotten password?</a
+              >
+
+              <button
+                mat-flat-button
+                color="primary"
+                [disabled]="!signInForm.valid || submitting"
+              >
+                Sign in
+              </button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
