@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, concatMap, delay, of } from 'rxjs';
 
-interface User {
+export interface User {
   /**
    * The username of the user.
    */
@@ -31,7 +31,7 @@ export class AuthService {
 
   user$: Observable<User> = of({
     username: 'katie',
-    email: 'katie@pojo.uk',
+    email: 'katie@example.com',
     firstName: 'Katie',
     lastName: 'Noake',
   });

@@ -60,10 +60,9 @@ export class LoginPageComponent {
       )
       .subscribe({
         next: () => {
-          this.router.navigate(['/welcome']);
+          this.router.navigate(['welcome']);
         },
         error: (error: Error) => {
-          console.log('boo');
           this.submitting = false;
           if (error.message === 'expired') {
             this.signInForm.controls.password.setErrors({
