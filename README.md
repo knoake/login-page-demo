@@ -1,5 +1,9 @@
 # LoginPageDemo
 
+[Login page demo](https://knoake.github.io/login-page-demo/)
+
+The login page is responsive and supports device sizes down to iphone SE
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.10.
 
 ## Development server
@@ -13,6 +17,8 @@ Run `ng generate component component-name` to generate a new component. You can 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+
+To build the demo project to GitHub pages run `ng build --output-path docs --base-href /login-page-demo/`. A copy of index.html must be created and renamed 404.html.
 
 ## Running unit tests
 
