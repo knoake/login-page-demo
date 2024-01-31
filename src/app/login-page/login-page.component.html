@@ -51,6 +51,15 @@
                 type="password"
                 autocomplete="current-password"
               />
+              <mat-error *ngIf="password?.errors?.['notAuthorized']"
+                >Incorrect username or password
+              </mat-error>
+              <mat-error *ngIf="password?.errors?.['tooManyAttempts']"
+                >Too many attempts. Please try again later.
+              </mat-error>
+              <mat-error *ngIf="password?.errors?.['accountExpired']"
+                >Your account has expired. Please contact your administrator.
+              </mat-error>
             </mat-form-field>
 
             <div class="button-container flex">
