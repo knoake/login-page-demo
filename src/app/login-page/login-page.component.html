@@ -2,7 +2,7 @@
   [ngClass]="{
     'form-container': (isHandset$ | async)
   }"
-  class="wrapper flex column"
+  class="wrapper wrapper-background flex column"
 >
   <div *ngIf="isHandset$ | async" class="progress-bar">
     <mat-progress-bar

@@ -14,3 +14,9 @@ app-root {
   flex-direction: column;
   min-height: 100%;
 }
+
+.wrapper-background {
+  background-image: url("assets/background.jpg");
+  background-size: cover;
+  background-position: center;
+}
