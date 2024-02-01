@@ -1,15 +1,20 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  TestBed,
+  fakeAsync,
+  tick,
+} from '@angular/core/testing';
 
-import { LoginPageComponent } from './login-page.component';
-import { AuthService, User } from '../auth.service';
-import { Observable, concatMap, of } from 'rxjs';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { provideRouter } from '@angular/router';
-import { WelcomePageComponent } from '../welcome-page/welcome-page.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Router, provideRouter } from '@angular/router';
+import { RouterTestingHarness } from '@angular/router/testing';
+import { Observable, concatMap, of } from 'rxjs';
+import { AuthService, User } from '../auth.service';
+import { LoginPageComponent } from './login-page.component';
 
 class MockAuthService {
   constructor() {}
@@ -47,10 +52,7 @@ describe('LoginPageComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [LoginPageComponent],
-      providers: [
-        provideRouter([{ path: '**', component: WelcomePageComponent }]),
-        { provide: AuthService, useClass: MockAuthService },
-      ],
+      providers: [{ provide: AuthService, useClass: MockAuthService }],
       imports: [
         MatFormFieldModule,
         ReactiveFormsModule,
@@ -117,4 +119,55 @@ describe('LoginPageComponent', () => {
       accountExpired: true,
     });
   });
+});
+
+describe('LoginPageComponent routing', () => {
+  let harness: RouterTestingHarness;
+  let component: LoginPageComponent;
+
+  beforeEach(async () => {
+    TestBed.configureTestingModule({
+      imports: [
+        MatFormFieldModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+      ],
+      declarations: [LoginPageComponent],
+      providers: [
+        provideRouter([{ path: '**', component: LoginPageComponent }]),
+        { provide: AuthService, useClass: MockAuthService },
+      ],
+    });
+
+    harness = await RouterTestingHarness.create();
+    component = await harness.navigateByUrl('', LoginPageComponent);
+  });
+
+  it('should navigate when user found', fakeAsync(() => {
+    const formData = {
+      username: 'katie@example.com',
+      password: 'hellomoto',
+    };
+    component.signInForm.setValue(formData);
+    component.onSubmit();
+
+    tick();
+
+    expect(TestBed.inject(Router).url).toEqual('/welcome');
+  }));
+
+  it('should not navigate when user not found', fakeAsync(() => {
+    const formData = {
+      username: 'katie@example.com',
+      password: 'hello',
+    };
+    component.signInForm.setValue(formData);
+    component.onSubmit();
+
+    tick();
+
+    expect(TestBed.inject(Router).url).toEqual('/');
+  }));
 });
