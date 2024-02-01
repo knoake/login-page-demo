@@ -8,7 +8,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
-import { RouterTestingHarness } from '@angular/router/testing';
 import { WelcomePageComponent } from '../welcome-page/welcome-page.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
@@ -41,9 +40,6 @@ class MockAuthService {
   }
 }
 
-let harness: RouterTestingHarness;
-//let comp: WelcomePageComponent;
-
 describe('LoginPageComponent', () => {
   let component: LoginPageComponent;
   let fixture: ComponentFixture<LoginPageComponent>;
@@ -62,11 +58,7 @@ describe('LoginPageComponent', () => {
         BrowserAnimationsModule,
         MatToolbarModule,
       ],
-    })
-      .compileComponents()
-      .then(async () => {
-        harness = await RouterTestingHarness.create();
-      });
+    }).compileComponents();
 
     fixture = TestBed.createComponent(LoginPageComponent);
     component = fixture.componentInstance;

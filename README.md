@@ -2,9 +2,19 @@
 
 [Login page demo](https://knoake.github.io/login-page-demo/)
 
-The login page is responsive and supports device sizes down to iphone SE
+The login page is responsive and supports device sizes down to iphone SE.
+
+The application will use the system theme for light and dark modes.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.10.
+
+## Known issues
+
+A light logo for dark mode needs sourcing.
+
+A lighter primary colour should be used in dark mode.
+
+The custom theme currently only uses a single shade of the motorola primary colour.
 
 ## Testing the login
 
@@ -25,7 +35,6 @@ Password: any
 Username: james@example.com
 
 Password: any
-
 
 ## Development server
 
